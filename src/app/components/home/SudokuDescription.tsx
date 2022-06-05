@@ -20,7 +20,7 @@ export const SudokuDescription: FC = () => {
         </p>
 
         <h1 className="heading">Solving sudoku using backtracking algoritm</h1>
-        <p> In a Sudoku game we have to follow the following constraints.</p>
+        <p> In a Sudoku game we have the following constraints.</p>
         <ul>
           <li>Numbers cannot repeat across a row.</li>
           <li>Numbers cannot repeat across a columns.</li>
@@ -28,7 +28,7 @@ export const SudokuDescription: FC = () => {
         </ul>
         <h2 className="heading">Solution</h2>
         <p>
-          At first the sudoku starting board is validated using javscript sets.
+          At first, the sudoku starting board is validated using javscript sets.
           Sets are used for detecting duplicates easily. After validating the
           starting board, the algorithm performs the following actions
         </p>

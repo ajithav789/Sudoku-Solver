@@ -3,27 +3,18 @@ import {
   INITIAL_SUDOKU_ARRAY,
   StatusMessages,
   SUDOKU_DIMENSION,
-} from "./SudokuConstants";
+} from "../../enums/SudokuConstants";
 import { motion } from "framer-motion";
 
 export const SudokuBody: FC = () => {
   const [sudoku2DArray, setSudoku2DArray] = useState(INITIAL_SUDOKU_ARRAY);
   const [status, setStatus] = useState(StatusMessages.READY);
 
-  function isValid(board: string[][], row: number, col: number, k: number) {
-    for (let i = 0; i < 9; i++) {
-      const m = 3 * Math.floor(row / 3) + Math.floor(i / 3);
-      const n = 3 * Math.floor(col / 3) + (i % 3);
-      if (
-        parseInt(board[row][i]) === k ||
-        parseInt(board[i][col]) === k ||
-        parseInt(board[m][n]) === k
-      ) {
-        return false;
-      }
-    }
-    return true;
-  }
+  /**
+   * This function is for validating the starting board only.
+   * @param board
+   * @returns
+   */
   function validateBoard(board: string[][]) {
     let set = new Set();
     let isEmptyBoard = true;
@@ -54,17 +45,46 @@ export const SudokuBody: FC = () => {
     return true;
   }
 
-  function sudokuSolver(data: any) {
+  /**
+   * This is the validation function for the backtracking algorithm
+   * @param board
+   * @param row
+   * @param col
+   * @param k
+   * @returns
+   */
+  function isValid(board: string[][], row: number, col: number, k: number) {
     for (let i = 0; i < 9; i++) {
-      for (let j = 0; j < 9; j++) {
-        if (data[i][j] === "." || data[i][j] === "") {
-          for (let k = 1; k <= 9; k++) {
-            if (isValid(data, i, j, k)) {
-              data[i][j] = `${k}`;
+      const m = 3 * Math.floor(row / 3) + Math.floor(i / 3);
+      const n = 3 * Math.floor(col / 3) + (i % 3);
+      if (
+        parseInt(board[row][i]) === k ||
+        parseInt(board[i][col]) === k ||
+        parseInt(board[m][n]) === k
+      ) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Accepts board data as a parameter, then modifies it until a solution is reached
+   * @param data
+   * @returns
+   */
+  function sudokuSolver(data: any) {
+    for (let row = 0; row < 9; row++) {
+      for (let col = 0; col < 9; col++) {
+        if (data[row][col] === "." || data[row][col] === "") {
+          for (let n = 1; n <= 9; n++) {
+            if (isValid(data, row, col, n)) {
+              data[row][col] = `${n}`;
+              //recursion
               if (sudokuSolver(data)) {
                 return true;
               } else {
-                data[i][j] = ".";
+                data[row][col] = ".";
               }
             }
           }
@@ -78,20 +98,16 @@ export const SudokuBody: FC = () => {
   const onCellChange = (row: number, col: number, value: string) => {
     let cellValue = value;
     let boardReplica = [];
-
     for (let i = 0; i < sudoku2DArray.length; i++)
       boardReplica[i] = sudoku2DArray[i].slice();
-
     boardReplica[row][col] = cellValue;
     setSudoku2DArray(boardReplica);
   };
 
   const handleSolveSudoku = () => {
     let boardReplica = [];
-
     for (let i = 0; i < sudoku2DArray.length; i++)
       boardReplica[i] = sudoku2DArray[i].slice();
-
     let isvalid = validateBoard(boardReplica);
     if (!isvalid) {
       setStatus(StatusMessages.INVALID_BOARD);

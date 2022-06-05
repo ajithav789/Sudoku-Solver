@@ -22,12 +22,6 @@ export const Header: FC = () => {
             >
               <span>About</span>
             </li>
-            <li
-             onClick={() => {
-              navigate("/contact");
-            }}>
-              <span>Contact</span>
-            </li>
           </ul>
         </nav>
       </div>
