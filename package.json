@@ -1,5 +1,5 @@
 {
-  "homepage": "http://ajithav789.github.io/Sudoku-Solver-Code",
+  "homepage": "http://ajithav789.github.io/Sudoku-Solver-TypescriptReact",
   "name": "sudoku",
   "version": "0.1.0",
   "private": true,
@@ -11,7 +11,8 @@
     "@types/node": "^16.11.38",
     "@types/react": "^18.0.10",
     "@types/react-dom": "^18.0.5",
-    "framer-motion": "^4.1.17",
+    "@types/react-router": "^5.1.18",
+    "framer-motion": "^6.3.10",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",

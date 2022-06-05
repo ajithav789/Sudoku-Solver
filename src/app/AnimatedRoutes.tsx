@@ -10,8 +10,11 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<SudokuBody />} />
-        <Route path="/about" element={<SudokuDescription />} />
+        <Route path="/Sudoku-Solver-TypescriptReact" element={<SudokuBody />} />
+        <Route
+          path="/Sudoku-Solver-TypescriptReact/about"
+          element={<SudokuDescription />}
+        />
         <Route path="*" element={<DefaultPage />} />
       </Routes>
     </AnimatePresence>

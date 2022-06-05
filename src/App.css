@@ -150,10 +150,44 @@ input[type="number"] {
 
 @media (max-width: 530px) {
   .sudoku_cell {
-    width: 40px;
-    height: 40px;
+    width: 33px;
+    height: 33px;
     font-size: 1rem;
     text-align: center;
     transition: 0.09s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  .btn-primary {
+    padding: 6px;
+    background-color: var(--primary-color);
+    font-size: 1rem;
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    transition: 0.1s ease-in;
+    border-radius: 25px;
+    margin: 0 20px;
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    background-color: var(--secondary-color);
+    font-size: 1rem;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+  }
+  .navbar ul,
+  .footer-links ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    list-style: none;
+    font-size: 0.7rem;
+    color: var(--secondary-color);
+  }
+  .navbar ul li,
+  .footer-links ul li {
+    cursor: pointer;
+  }
+  .footer-links {
+    margin-top: 30px;
   }
 }

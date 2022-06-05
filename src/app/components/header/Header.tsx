@@ -10,14 +10,14 @@ export const Header: FC = () => {
           <ul>
             <li
               onClick={() => {
-                navigate("/");
+                navigate("/Sudoku-Solver-TypescriptReact");
               }}
             >
               <span>Home</span>
             </li>
             <li
               onClick={() => {
-                navigate("/about");
+                navigate("/Sudoku-Solver-TypescriptReact/about");
               }}
             >
               <span>About</span>
